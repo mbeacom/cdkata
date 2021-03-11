@@ -1,0 +1,134 @@
+[tool.poetry]
+name = "cdkata"
+version = "0.0.0"
+description = "CDKata"
+authors = ["Mark Beacom <m@beacom.dev>"]
+include = [
+    "CHANGELOG.md",
+]
+readme = "README.md"
+repository = "https://github.com/mbeacoom/cdkata"
+homepage = "https://cdkata.io"
+documentation = "https://docs.cdkata.io"
+keywords = [
+    "cdk",
+    "aws",
+    "infrastructure",
+    "cloud",
+    "templates",
+]
+classifiers = [
+    "Environment :: Console",
+    "Environment :: MacOS X",
+    "Environment :: Win32 (MS Windows)",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS",
+    "Operating System :: MacOS :: MacOS 9",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fire = "^0.4.0"
+boto3 = "^1.17.22"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = "^20.8b1"
+isort = {extras = ["pyproject"], version = "^5.7.0"}
+bandit = "^1.7.0"
+pydocstyle = "^5.1.1"
+mypy = "^0.812"
+pytest-cov = "^2.11.1"
+pylint = "^2.7.2"
+yapf = "^0.30.0"
+pytest-mypy = "^0.8.0"
+safety = "^1.10.3"
+coverage = {extras = ["toml"], version = "^5.5"}
+pytest-pylint = "^0.18.0"
+pydoc-markdown = "^3.10.0"
+pymdown-extensions = "^8.1.1"
+mkdocs = "^1.1.2"
+mkdocs-material = "^7.0.5"
+pytest-sugar = "^0.9.4"
+
+[tool.poetry.scripts]
+cdkata = "cdkata.cli:main"
+
+[tool.poetry.urls]
+"Issues" = "https://github.com/mbeacom/cdkata/issues"
+"Projects" = "https://github.com/mbeacom/cdkata/projects"
+"Author" = "https://markbeacom.com"
+
+[tool.isort]
+profile = "black"
+known_future_library = "__future__"
+known_third_party = [
+    "boto3",
+    "botocore",
+    "fire",
+    "pytest",
+    "requests",
+]
+known_first_party = [
+    "cdkata",
+    "cli",
+]
+default_section = "THIRDPARTY"
+indent = "    "
+sections = [
+    "FUTURE",
+    "STDLIB",
+    "THIRDPARTY",
+    "FIRSTPARTY",
+    "LOCALFOLDER",
+]
+
+[tool.pytest.ini_options]
+addopts = "-rf --cov=cdkata --pylint"
+python_files = [
+    "test_*.py",
+    "*_test.py",
+    "tests.py",
+]
+norecursedirs = [
+    ".git",
+    "venv",
+    "dist",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".github"
+]
+
+[tool.coverage.run]
+source = ["cdkata"]
+
+[tool.black]
+line-length = 120
+target-version = ["py38"]
+
+[tool.pylint]
+line_length = 120
+
+[tool.portray.mkdocs.theme]
+name = "material"
+palette = {primary = "blue", accent = "light blue"}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
