@@ -1,9 +1,6 @@
 name: Coverage
 
-on:
-  push:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   codecov:
@@ -41,5 +38,4 @@ jobs:
     - name: Upload coverage
       uses: codecov/codecov-action@v1
       with:
-        file: ./coverage.xml
         fail_ci_if_error: true
