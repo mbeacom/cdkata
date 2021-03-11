@@ -24,14 +24,14 @@ jobs:
       with:
         path: .venv
         key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-        # Install dependencies if cache does not exist
-      - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
-        # Install your root project, if required
-      - name: Install library
-        run: poetry install --no-interaction
-        # Run test suite and output coverage file
+      # Install dependencies if cache does not exist
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
+      # Install your root project, if required
+    - name: Install library
+      run: poetry install --no-interaction
+      # Run test suite and output coverage file
     - name: Test with pytest
       run: poetry run pytest
       # Upload coverage stats
