@@ -101,7 +101,7 @@ sections = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "-rf --cov=cdkata --pylint"
+addopts = "-rf --cov=cdkata --cov-report=xml --pylint"
 python_files = [
     "test_*.py",
     "*_test.py",
