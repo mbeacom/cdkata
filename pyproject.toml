@@ -66,6 +66,7 @@ pymdown-extensions = "^8.1.1"
 mkdocs = "^1.1.2"
 mkdocs-material = "^7.0.5"
 pytest-sugar = "^0.9.4"
+codecov = "^2.1.11"
 
 [tool.poetry.scripts]
 cdkata = "cdkata.cli:main"
