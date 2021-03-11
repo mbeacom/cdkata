@@ -33,7 +33,7 @@ jobs:
       run: poetry install --no-interaction
       # Run test suite and output coverage file
     - name: Test with pytest
-      run: poetry run pytest
+      run: poetry run pytest --cov=cdkata --cov-report=xml
       # Upload coverage stats
     - name: Upload coverage
       uses: codecov/codecov-action@v1
