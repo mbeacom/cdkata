@@ -119,6 +119,12 @@ norecursedirs = [
 [tool.coverage.run]
 source = ["cdkata"]
 
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+]
+
 [tool.black]
 line-length = 120
 target-version = ["py38"]
