@@ -22,8 +22,11 @@ build: ## Build the docker image.
 init: ## Initialize the project.
 	@poetry install
 
+test: ## Test the project with pytest
+	@poetry run pytest --cov=cdkata --cov-report=xml
+
 isort: ## Run isort against the project.
-	@poetry run isort --profile black .
+	@poetry run isort .
 
 action-prep: ## Prepare for poetry action.
 	@python -m pip install --upgrade pip
